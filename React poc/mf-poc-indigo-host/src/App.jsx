@@ -1,35 +1,29 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from 'react-dom';
 // import Test from "remote/Test"
 import UserLoggedIn from "./components/UserList";
 
-const RemoteApp = React.lazy(()=> import("remote/Test"))
+const RemoteApp = React.lazy(()=> import("remote/App"))
 
 
 import "./index.css";
 
 const App = () => {
-  let userData = {};
   const [  userList , setUserList] = useState({});
-  const handleFromSubmit = (formData)=>{
-    console.log("FormData",formData);
-    setUserList({
-      email: formData.email,
-      password: formData.password,
-      name: formData.name,
-      number: formData.number
-    });
-    console.log("userListh",userList);
-  };
+
+  useEffect(()=>{
+    // console.log('Host data from remote', data);
+    // setUserList(data);
+  }, [])
 
   return(
     <>
       <div className="container">
         <React.Suspense fallback="loading...">
-          <RemoteApp onSubmit={handleFromSubmit} />
+          <RemoteApp />
         </React.Suspense>
       </div>
-      { Object.keys(userList).length > 0 ? <UserLoggedIn data={userList} /> : null}
+      {/* { Object.keys(userList).length > 0 ? <UserLoggedIn data={userList} /> : null} */}
     </>
   );
 };

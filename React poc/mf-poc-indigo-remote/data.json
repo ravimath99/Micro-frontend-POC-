@@ -1,0 +1,14 @@
+{
+    "getUserData":[
+        {
+            "id":1,
+            "title": "hello",
+            "content": "this is my first post"
+        },
+        {
+            "id":2,
+            "title": "lo",
+            "content": "first post"
+        }
+    ]
+}
